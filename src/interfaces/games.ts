@@ -57,7 +57,7 @@ export interface Game {
   saturated_color:    string;
   dominant_color:     string;
   platforms:          PlatformElement[];
-  parent_platforms:   ParentPlatform[];
+  parent_platforms:   { platform: Platform }[];
   genres:             Genre[];
   stores:             Store[];
   clip:               null;
@@ -91,8 +91,10 @@ export interface Genre {
   language?:        string;
 }
 
-export interface ParentPlatform {
-  platform: EsrbRating;
+export interface Platform {
+  id:   number;
+  name: string;
+  slug: string;
 }
 
 export interface PlatformElement {
