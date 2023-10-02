@@ -25,7 +25,7 @@ const iconMap: { [key: string]: IconType } = {
 
 const PlatformIconList: FC<Props> = ({ platforms }) => {
   return (
-    <HStack marginY={3} justifyContent="center">
+    <HStack>
       {platforms.map((platform) => (
         <Icon as={iconMap[platform.slug]} color="gray.500" />
       ))}

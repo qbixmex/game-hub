@@ -8,7 +8,7 @@ const GameGrid = () => {
   const { games, errorMessage, loading } = useGames();
 
   return (
-    <main style={{ textAlign: 'center' }}>
+    <main>
       <Text fontSize="3rem">Games</Text>
 
       { errorMessage && <Text color="red.400" fontSize="1.2rem">{errorMessage}</Text> }
