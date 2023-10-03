@@ -11,7 +11,7 @@ type Props = {
 const GameCard: FC<Props> = ({ game }) => {
 
   return (
-    <Card borderRadius={10} overflow="hidden">
+    <Card borderRadius={10} width="300px" overflow="hidden">
       <Image
         src={getCroppedImageUrl(game.background_image)}
         alt={game.name}
