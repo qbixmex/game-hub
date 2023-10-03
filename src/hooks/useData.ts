@@ -26,14 +26,13 @@ const useData = <T>(endpoint: string) => {
           const dataResults = response.data.results;
           setData(dataResults);
           localStorage.setItem(endpoint, JSON.stringify(dataResults));
-          setIsLoading(false);
         })
         .catch((error: AxiosError) => {
           if (error.response?.status === 404) {
             setErrorMessage('The requested resource was not found on this server !');
           }
-          setIsLoading(false);
         })
+        .finally(() => setIsLoading(false));
     } else {
       setData(JSON.parse(storage as string));
     }
