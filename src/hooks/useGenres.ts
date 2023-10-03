@@ -2,25 +2,26 @@ import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
 import { AxiosError } from "axios";
 
-import { Games, Game } from "../interfaces";
+import { GenreResponse, Genre } from "../interfaces";
 
-const useGames = () => {
+const useGenres = () => {
 
-  const [ games, setGames ] = useState<Game[]>([]);
+  const [ genres, setGenres ] = useState<Genre[]>([]);
   const [ errorMessage, setErrorMessage ] = useState('');
   const [ isLoading, setIsLoading ] = useState(false);
 
   useEffect(() => {
     const controller = new AbortController();
-    const storage = localStorage.getItem('games');
+    // const storage = localStorage.getItem('games');
+    const storage = null; // TODO REMOVE THIS LINE !
 
     if (!storage) {
       setIsLoading(true);
-      apiClient.get<Games>('/games', { signal: controller.signal })
+      apiClient.get<GenreResponse>('/genres', { signal: controller.signal })
         .then((response) => {
-          const gameData = response.data.results;
-          setGames(gameData);
-          localStorage.setItem('games', JSON.stringify(gameData));
+          const genreData = response.data.results;
+          setGenres(genreData);
+          localStorage.setItem('games', JSON.stringify(genreData));
           setIsLoading(false);
         })
         .catch((error: AxiosError) => {
@@ -30,15 +31,15 @@ const useGames = () => {
           setIsLoading(false);
         })
     } else {
-      setGames(JSON.parse(storage as string));
+      setGenres(JSON.parse(storage as string));
     }
   }, []);
 
   return {
-    games,
+    genres,
     errorMessage,
     isLoading,
   };
 };
 
-export default useGames;
+export default useGenres;

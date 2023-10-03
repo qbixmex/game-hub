@@ -81,6 +81,14 @@ export interface EsrbRating {
   slug: string;
 }
 
+export interface GenreResponse {
+  id: number;
+  count: number;
+  next: string | null;
+  previous: string | null;
+  results: Genre[];
+}
+
 export interface Genre {
   id:               number;
   name:             string;
