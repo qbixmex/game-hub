@@ -12,8 +12,7 @@ const useGenres = () => {
 
   useEffect(() => {
     const controller = new AbortController();
-    // const storage = localStorage.getItem('games');
-    const storage = null; // TODO REMOVE THIS LINE !
+    const storage = localStorage.getItem('genres');
 
     if (!storage) {
       setIsLoading(true);
@@ -21,7 +20,7 @@ const useGenres = () => {
         .then((response) => {
           const genreData = response.data.results;
           setGenres(genreData);
-          localStorage.setItem('games', JSON.stringify(genreData));
+          localStorage.setItem('genres', JSON.stringify(genreData));
           setIsLoading(false);
         })
         .catch((error: AxiosError) => {
@@ -33,6 +32,7 @@ const useGenres = () => {
     } else {
       setGenres(JSON.parse(storage as string));
     }
+    return () => controller.abort();
   }, []);
 
   return {

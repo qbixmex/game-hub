@@ -32,6 +32,7 @@ const useGames = () => {
     } else {
       setGames(JSON.parse(storage as string));
     }
+    return () => controller.abort();
   }, []);
 
   return {
