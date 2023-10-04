@@ -1,6 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { useEffect, useState } from "react";
 import apiClient from "../services/api-client";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosRequestConfig } from "axios";
 
 interface FetchResponse<T> {
   count: number;
@@ -9,7 +11,11 @@ interface FetchResponse<T> {
   results: T[];
 }
 
-const useData = <T>(endpoint: string) => {
+const useData = <T>(
+  endpoint: string,
+  requestConfig?: AxiosRequestConfig,
+  dependencies?: any[],
+) => {
 
   const [ data, setData ] = useState<T[]>([]);
   const [ errorMessage, setErrorMessage ] = useState('');
@@ -17,27 +23,26 @@ const useData = <T>(endpoint: string) => {
 
   useEffect(() => {
     const controller = new AbortController();
-    const storage = localStorage.getItem(endpoint);
 
-    if (!storage) {
-      setIsLoading(true);
-      apiClient.get<FetchResponse<T>>(`/${endpoint}`, { signal: controller.signal })
-        .then((response) => {
-          const dataResults = response.data.results;
-          setData(dataResults);
-          localStorage.setItem(endpoint, JSON.stringify(dataResults));
-        })
-        .catch((error: AxiosError) => {
-          if (error.response?.status === 404) {
-            setErrorMessage('The requested resource was not found on this server !');
-          }
-        })
-        .finally(() => setIsLoading(false));
-    } else {
-      setData(JSON.parse(storage as string));
-    }
+    setIsLoading(true);
+
+    apiClient.get<FetchResponse<T>>(`/${endpoint}`, {
+      signal: controller.signal,
+      ...requestConfig,
+    })
+      .then((response) => {
+        setData(response.data.results);
+      })
+      .catch((error: AxiosError) => {
+        if (error.response?.status === 404) {
+          setErrorMessage('The requested resource was not found on this server !');
+        }
+      })
+      .finally(() => setIsLoading(false));
+
     return () => controller.abort();
-  }, [endpoint]);
+
+  }, dependencies ? [...dependencies, endpoint] : [endpoint]);
 
   return {
     data,
