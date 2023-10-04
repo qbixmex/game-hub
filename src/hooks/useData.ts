@@ -42,7 +42,7 @@ const useData = <T>(
 
     return () => controller.abort();
 
-  }, dependencies ? [...dependencies, endpoint] : [endpoint]);
+  }, dependencies ? [...dependencies] : []);
 
   return {
     data,

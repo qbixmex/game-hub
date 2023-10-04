@@ -1,11 +1,16 @@
-import { Game, Genre } from "../interfaces";
+import { Game, Genre, Platform } from "../interfaces";
 import useData from "./useData";
 
-const useGames = (selectedGenre: Genre | null) => {
+const useGames = (selectedGenre: Genre | null, selectedPlatform: Platform | null) => {
   return useData<Game>(
     'games',
-    { params: { genres: selectedGenre?.id } },
-    [selectedGenre?.id]
+    {
+      params: {
+        genres: selectedGenre?.id,
+        platforms: selectedPlatform?.id
+      }
+    },
+    [selectedGenre?.id, selectedPlatform?.id]
   );
 };
 
