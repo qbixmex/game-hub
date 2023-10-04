@@ -1,9 +1,9 @@
+import { FC } from "react";
 import { SimpleGrid, Text } from "@chakra-ui/react";
 import { GameCard, GameCardContainer, GameCardSkeleton } from ".";
 import { skeletons } from "../data/constants";
 import useGames from "../hooks/useGames";
 import { Genre } from "../interfaces";
-import { FC } from "react";
 
 type Props = {
   selectedGenre: Genre | null;
