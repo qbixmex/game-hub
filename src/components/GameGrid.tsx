@@ -3,17 +3,15 @@ import { SimpleGrid, Text } from "@chakra-ui/react";
 import { GameCard, GameCardContainer, GameCardSkeleton } from ".";
 import { skeletons } from "../data/constants";
 import useGames from "../hooks/useGames";
-import { Genre, Platform } from "../interfaces";
+import { GameQuery } from "../interfaces";
 
 type Props = {
-  selectedGenre: Genre | null;
-  selectedPlatform: Platform | null;
+  gameQuery: GameQuery
 };
 
-const GameGrid: FC<Props> = ({ selectedGenre, selectedPlatform }) => {
+const GameGrid: FC<Props> = ({ gameQuery }) => {
 
-  const gamesState = useGames(selectedGenre, selectedPlatform);
-  const { data, errorMessage, isLoading } = gamesState;
+  const { data, errorMessage, isLoading } = useGames(gameQuery);
 
   return (
     <main>
