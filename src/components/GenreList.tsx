@@ -6,9 +6,10 @@ import { Genre } from "../interfaces";
 
 type Props = {
   selectGenre: (genre: Genre) => void;
+  selectedGenreId?: number;
 };
 
-const GenreList: FC<Props> = ({ selectGenre }) => {
+const GenreList: FC<Props> = ({ selectGenre, selectedGenreId }) => {
 
   const { data, isLoading, errorMessage } = useGenres();
 
@@ -25,10 +26,14 @@ const GenreList: FC<Props> = ({ selectGenre }) => {
               boxSize={10}
               borderRadius={8}
               objectFit="cover"
+              wordBreak="break-word"
+              marginRight={2}
             />
             <Button
               fontSize="2xl"
               variant="link"
+              fontWeight={genre.id === selectedGenreId ? 'bold': 'normal'}
+              color={genre.id === selectedGenreId ? 'purple.400': 'white'}
               onClick={() => selectGenre(genre)}
             >{genre.name}</Button>
           </HStack>
