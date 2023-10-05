@@ -1,6 +1,6 @@
 import { FC } from "react";
 import { SimpleGrid, Text } from "@chakra-ui/react";
-import { GameCard, GameCardContainer, GameCardSkeleton } from ".";
+import { GameCard, GameCardContainer, GameCardSkeleton, GameHeading } from ".";
 import { skeletons } from "../data/constants";
 import useGames from "../hooks/useGames";
 import { GameQuery } from "../interfaces";
@@ -15,6 +15,8 @@ const GameGrid: FC<Props> = ({ gameQuery }) => {
 
   return (
     <main>
+      <GameHeading gameQuery={gameQuery} />
+
       { errorMessage && <Text color="red.400" fontSize="1.2rem">{errorMessage}</Text> }
 
       <SimpleGrid
