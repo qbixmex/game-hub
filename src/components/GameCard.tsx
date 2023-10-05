@@ -17,11 +17,15 @@ const GameCard: FC<Props> = ({ game }) => {
         alt={game.name}
       />
       <CardBody>
-        <Heading fontSize="2xl">{game.name}</Heading>
-        <HStack justifyContent="space-between" alignItems="center" marginY={2}>
+        <HStack
+          alignItems="center"
+          justifyContent="space-between"
+          marginBottom={4}
+        >
           <PlatformIconList platforms={game.parent_platforms.map(p => p.platform)} />
           <CriticScore score={game.metacritic} />
         </HStack>
+        <Heading fontSize="2xl">{game.name}</Heading>
       </CardBody>
     </Card>
   );
