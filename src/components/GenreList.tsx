@@ -35,6 +35,8 @@ const GenreList: FC<Props> = ({ selectGenre, selectedGenreId }) => {
               fontWeight={genre.id === selectedGenreId ? 'bold': 'normal'}
               color={genre.id === selectedGenreId ? 'purple.400': 'white'}
               onClick={() => selectGenre(genre)}
+              whiteSpace="pre-wrap"
+              textAlign="left"
             >{genre.name}</Button>
           </HStack>
         </ListItem>
