@@ -13,11 +13,17 @@ const GameGrid: FC<Props> = ({ gameQuery }) => {
 
   const { data, errorMessage, isLoading } = useGames(gameQuery);
 
+  if (errorMessage) {
+    return (
+      <Text color="red.400" fontSize="1.2rem">
+        {errorMessage}
+      </Text>
+    );
+  }
+
   return (
     <main>
       <GameHeading gameQuery={gameQuery} />
-
-      { errorMessage && <Text color="red.400" fontSize="1.2rem">{errorMessage}</Text> }
 
       <SimpleGrid
         columns={{ sm: 1, md: 2, lg: 3, xl: 4 }}
