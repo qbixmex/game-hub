@@ -1,5 +1,5 @@
-import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { FC, useRef } from 'react';
+import { Input, InputGroup, InputLeftElement } from '@chakra-ui/react';
 import { BsSearch } from 'react-icons/bs';
 
 type Props = {

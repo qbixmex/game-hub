@@ -1,8 +1,8 @@
-import { FC } from "react";
-import { Button, HStack, Heading, Image, List, ListItem, Spinner } from "@chakra-ui/react";
+import { FC } from 'react';
+import { Button, HStack, Heading, Image, List, ListItem, Spinner } from '@chakra-ui/react';
 import useGenres from '../hooks/useGenres';
-import getCroppedImageUrl from "../services/image-url";
-import { Genre } from "../interfaces";
+import getCroppedImageUrl from '../services/image-url';
+import { Genre } from '../interfaces';
 
 type Props = {
   selectGenre: (genre: Genre) => void;

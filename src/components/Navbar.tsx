@@ -1,8 +1,7 @@
-import { Flex, Image } from "@chakra-ui/react";
-
-import { ColorModeSwitch, Search } from ".";
+import { FC } from 'react';
+import { Flex, Image } from '@chakra-ui/react';
+import { ColorModeSwitch, Search } from '.';
 import logo from '../assets/logo.webp';
-import { FC } from "react";
 
 type Props = {
   onSearch: (searchTerm: string) => void;

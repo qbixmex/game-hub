@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { useEffect, useState } from "react";
-import apiClient from "../services/api-client";
-import { AxiosError, AxiosRequestConfig } from "axios";
+import { useEffect, useState } from 'react';
+import apiClient from '../services/api-client';
+import { AxiosError, AxiosRequestConfig } from 'axios';
 
 interface FetchResponse<T> {
   count: number;

@@ -1,5 +1,5 @@
-import { Game, GameQuery } from "../interfaces";
-import useData from "./useData";
+import { Game, GameQuery } from '../interfaces';
+import useData from './useData';
 
 const useGames = (gameQuery: GameQuery) => {
   return useData<Game>(
