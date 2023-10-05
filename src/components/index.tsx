@@ -8,3 +8,4 @@ export { default as PlatformIconList } from './PlatformIconList';
 export { default as CriticScore } from './CriticScore';
 export { default as GenreList } from './GenreList';
 export { default as PlatformSelector } from './PlatformSelector';
+export { default as SortSelector } from './SortSelector';
