@@ -11,3 +11,4 @@ export { default as PlatformSelector } from './PlatformSelector';
 export { default as SortSelector } from './SortSelector';
 export { default as Search } from './Search';
 export { default as GameHeading } from './GameHeading';
+export { default as Emoji } from './Emoji';
