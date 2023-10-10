@@ -11,9 +11,9 @@ type Props = {
 
 const PlatformSelector: FC<Props> = ({ onSelectedPlatform, selectedPlatform }) => {
 
-  const { data, errorMessage } = usePlatforms();
+  const { data, error } = usePlatforms();
 
-  if (errorMessage) return null;
+  if (error) return null;
 
   return (
     <Menu>
@@ -24,7 +24,7 @@ const PlatformSelector: FC<Props> = ({ onSelectedPlatform, selectedPlatform }) =
         { selectedPlatform?.name ?? 'Platforms' }
       </MenuButton>
       <MenuList>
-        {data.map((platform) => (
+        {data?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={() => onSelectedPlatform(platform)}
