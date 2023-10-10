@@ -1,14 +1,13 @@
 import { useQuery } from '@tanstack/react-query';
-import apiClient from '../services/api-client';
 import { Genre, FetchResponse } from '../interfaces';
 import genresResponse from '../data/genres';
+import APIClient from '../services/api-client';
 
-const useGenres = () => useQuery({
+const apiClient = new APIClient<Genre>('/genres');
+
+const useGenres = () => useQuery<FetchResponse<Genre>, Error>({
   queryKey: ['genres'],
-  queryFn: async () => {
-    const response = await apiClient.get<FetchResponse<Genre>>('/genres')
-    return response.data;
-  },
+  queryFn: async () => await apiClient.getAll(),
   staleTime: 24 * 60 * 60 * 1000, // 24 hours
   initialData: genresResponse,
 });
