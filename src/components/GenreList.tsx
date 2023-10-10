@@ -11,16 +11,16 @@ type Props = {
 
 const GenreList: FC<Props> = ({ selectGenre, selectedGenreId }) => {
 
-  const { data, isLoading, errorMessage } = useGenres();
+  const { data, isLoading, error } = useGenres();
 
-  if (errorMessage) return null;
+  if (error) return null;
   if (isLoading) return <Spinner size="xl" color="purple.400" />;
 
   return (
     <>
       <Heading fontSize="2xl" marginBottom={3}>Genres</Heading>
       <List>
-        {data.map((genre) => (
+        {data?.results.map(genre => (
           <ListItem key={genre.id}>
             <HStack paddingY={3}>
               <Image

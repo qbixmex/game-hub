@@ -81,12 +81,12 @@ export interface EsrbRating {
   slug: string;
 }
 
-export interface GenreResponse {
-  id: number;
+export interface FetchResponse<T> {
+  id?: number;
   count: number;
   next: string | null;
   previous: string | null;
-  results: Genre[];
+  results: T[];
 }
 
 export interface Genre {

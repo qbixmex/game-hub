@@ -1,7 +1,7 @@
 {
   "name": "game-hub",
   "private": true,
-  "version": "1.0.1",
+  "version": "1.1.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -13,6 +13,7 @@
     "@chakra-ui/react": "^2.8.1",
     "@emotion/react": "^11.11.1",
     "@emotion/styled": "^11.11.0",
+    "@tanstack/react-query": "^4.36.1",
     "axios": "^1.5.1",
     "framer-motion": "^10.16.4",
     "react": "^18.2.0",
@@ -20,6 +21,7 @@
     "react-icons": "^4.11.0"
   },
   "devDependencies": {
+    "@tanstack/react-query-devtools": "^4.36.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
     "@typescript-eslint/eslint-plugin": "^6.0.0",
