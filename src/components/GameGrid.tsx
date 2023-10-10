@@ -11,12 +11,12 @@ type Props = {
 
 const GameGrid: FC<Props> = ({ gameQuery }) => {
 
-  const { data, errorMessage, isLoading } = useGames(gameQuery);
+  const { data, error, isLoading } = useGames(gameQuery);
 
-  if (errorMessage) {
+  if (error) {
     return (
-      <Text color="red.400" fontSize="1.2rem">
-        {errorMessage}
+      <Text color="red.400" fontSize="1.2rem" fontWeight="bold">
+        {error.message}
       </Text>
     );
   }
@@ -36,7 +36,7 @@ const GameGrid: FC<Props> = ({ gameQuery }) => {
           </GameCardContainer>
         )))}
 
-        {!isLoading && data.map((game) => (
+        {!isLoading && data?.results.map((game) => (
           <GameCardContainer key={game.id}>
             <GameCard game={game} />
           </GameCardContainer>

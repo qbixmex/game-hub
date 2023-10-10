@@ -5,7 +5,7 @@ import platformsResponse from '../data/platforms';
 
 const usePlatforms = () => useQuery({
   queryKey: ['platforms'],
-  queryFn: async() => {
+  queryFn: async () => {
     const response = await apiClient.get<FetchResponse<Platform>>('/platforms/lists/parents');
     return response.data;
   },
