@@ -35,7 +35,7 @@ const GenreList: FC<Props> = ({ selectGenre, selectedGenreId }) => {
                 fontSize="2xl"
                 variant="link"
                 fontWeight={genre.id === selectedGenreId ? 'bold': 'normal'}
-                color={genre.id === selectedGenreId ? 'purple.400': 'white'}
+                color={genre.id === selectedGenreId ? 'purple.400' : ''}
                 onClick={() => selectGenre(genre)}
                 whiteSpace="normal"
                 textAlign="left"
