@@ -11,7 +11,7 @@ const GameHeading: FC<Props> = ({ gameQuery }) => {
   const TITLE = `${gameQuery.platform?.name ?? ''} ${gameQuery.genre?.name ?? ''} Games`.trimStart();
 
   return (
-    <Heading as="h1" mb={5} ml={5} size="3xl">{ TITLE }</Heading>
+    <Heading as="h1" mb={5} size="3xl">{ TITLE }</Heading>
   );
 
 };
