@@ -19,21 +19,27 @@ const App = () => {
         }}
       >
         <GridItem area="nav">
-          <Navbar onSearch={(searchTerm) => setGameQuery({ ...gameQuery, searchText: searchTerm })} />
+          <Navbar onSearch={(searchTerm) => {
+            setGameQuery({ ...gameQuery, searchText: searchTerm })}
+          } />
         </GridItem>
         <Show above="lg">
           <GridItem area="aside" paddingX={5}>
             <GenreList
-              selectedGenreId={ gameQuery.genre?.id }
-              selectGenre={(genre) => setGameQuery({ ...gameQuery, genre })}
+              selectedGenreId={ gameQuery.genreId }
+              selectGenre={genre => {
+                setGameQuery({ ...gameQuery, genreId: genre.id })}
+              }
             />
           </GridItem>
         </Show>
         <GridItem area="main">
           <Flex marginLeft={4} mb={5} gap={4}>
             <PlatformSelector
-              selectedPlatform={ gameQuery.platform }
-              onSelectedPlatform={(platform) => setGameQuery({ ...gameQuery, platform })}
+              selectedPlatformId={ gameQuery.platformId }
+              onSelectedPlatform={(platform) => {
+                setGameQuery({ ...gameQuery, platformId: platform.id })
+              }}
             />
             <SortSelector
               sortOrder={gameQuery.sortOrder}

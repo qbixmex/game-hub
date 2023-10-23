@@ -6,12 +6,13 @@ import { Platform } from '../interfaces';
 
 type Props = {
   onSelectedPlatform: (platform: Platform) => void;
-  selectedPlatform: Platform | null;
+  selectedPlatformId?: number;
 }
 
-const PlatformSelector: FC<Props> = ({ onSelectedPlatform, selectedPlatform }) => {
+const PlatformSelector: FC<Props> = ({ onSelectedPlatform, selectedPlatformId }) => {
 
-  const { data, error } = usePlatforms();
+  const { data: platforms, error } = usePlatforms();
+  const selectedPlatform = platforms.results.find(p => p.id === selectedPlatformId);
 
   if (error) return null;
 
@@ -24,7 +25,7 @@ const PlatformSelector: FC<Props> = ({ onSelectedPlatform, selectedPlatform }) =
         { selectedPlatform?.name ?? 'Platforms' }
       </MenuButton>
       <MenuList>
-        {data?.results.map((platform) => (
+        {platforms?.results.map((platform) => (
           <MenuItem
             key={platform.id}
             onClick={() => onSelectedPlatform(platform)}
