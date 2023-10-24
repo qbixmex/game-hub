@@ -1,16 +1,11 @@
-import { FC, Fragment } from 'react';
+import { Fragment } from 'react';
 import { Box, SimpleGrid, Spinner, Text } from '@chakra-ui/react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 import { GameCard, GameCardContainer, GameCardSkeleton, GameHeading } from '.';
 import { skeletons } from '../data/constants';
 import useGames from '../hooks/useGames';
-import { GameQuery } from '../interfaces';
 
-type Props = {
-  gameQuery: GameQuery
-};
-
-const GameGrid: FC<Props> = ({ gameQuery }) => {
+const GameGrid = () => {
 
   const {
     data,
@@ -18,7 +13,7 @@ const GameGrid: FC<Props> = ({ gameQuery }) => {
     isLoading,
     fetchNextPage,
     hasNextPage,
-  } = useGames(gameQuery);
+  } = useGames();
 
   if (error) {
     return (
@@ -34,7 +29,7 @@ const GameGrid: FC<Props> = ({ gameQuery }) => {
 
   return (
     <Box paddingX="20px">
-      <GameHeading gameQuery={gameQuery} />
+      <GameHeading />
 
       <InfiniteScroll
         dataLength={totalFetchedGames}

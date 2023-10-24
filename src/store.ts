@@ -1,8 +1,8 @@
 import { create } from 'zustand';
 
 interface GameQuery {
-  genreId?: string;
-  platformId?: string;
+  genreId?: number;
+  platformId?: number;
   sortOrder?: string;
   searchText?: string;
 }
@@ -10,8 +10,8 @@ interface GameQuery {
 interface GameQueryStore {
   gameQuery: GameQuery;
   setSearchText: (searchText: string) => void;
-  setGenreId: (genreId: string) => void;
-  setPlatformId: (platformId: string) => void;
+  setGenreId: (genreId: number) => void;
+  setPlatformId: (platformId: number) => void;
   setSortOrder: (sortOrder: string) => void;
 }
 
