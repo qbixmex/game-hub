@@ -62,6 +62,7 @@ export interface Game {
   parent_platforms:   { platform: Platform }[];
   genres:             Genre[];
   stores:             Store[];
+  publishers:         Publisher[];
   clip:               null;
   tags:               Genre[];
   esrb_rating:        EsrbRating;
@@ -99,6 +100,14 @@ export interface Genre {
   image_background: string;
   domain?:          string;
   language?:        string;
+}
+
+export interface Publisher {
+  id: number;
+  name: string;
+  slug: string;
+  games_count: number;
+  image_background: string;
 }
 
 export interface Platform {
