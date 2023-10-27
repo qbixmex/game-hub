@@ -1,15 +1,11 @@
 import { FC } from 'react';
-import { Game } from '../interfaces';
 import { Card, CardBody, Flex, HStack, Heading, Image } from '@chakra-ui/react';
+import { Link } from 'react-router-dom';
 import { CriticScore, Emoji, PlatformIconList } from '.';
+import { Game } from '../interfaces';
 import getCroppedImageUrl from '../services/image-url';
 
-type Props = {
-  game: Game;
-};
-
-const GameCard: FC<Props> = ({ game }) => {
-
+const GameCard: FC<{game: Game}> = ({ game }) => {
   return (
     <Card>
       <Image
@@ -26,7 +22,9 @@ const GameCard: FC<Props> = ({ game }) => {
           <CriticScore score={game.metacritic} />
         </HStack>
         <Flex justifyContent="space-between" alignItems="center">
-          <Heading fontSize="2xl" whiteSpace="break-spaces">{game.name}</Heading>
+          <Heading fontSize="2xl" whiteSpace="break-spaces">
+            <Link to={`/games/${game.slug}`}>{game.name}</Link>
+          </Heading>
           <Emoji rating={ game.rating_top } />
         </Flex>
       </CardBody>

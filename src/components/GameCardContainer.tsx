@@ -7,7 +7,13 @@ type Props = {
 
 const GameCardContainer: FC<Props> = ({ children }) => {
   return (
-    <Box borderRadius={10} overflow="hidden">
+    <Box
+      _hover={{
+        transform: 'scale(1.03)',
+        transition: 'transform 150ms ease-in-out'
+      }}
+      borderRadius={10} overflow="hidden"
+    >
       {children}
     </Box>
   );
