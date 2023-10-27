@@ -12,3 +12,4 @@ export { default as SortSelector } from './SortSelector';
 export { default as Search } from './Search';
 export { default as GameHeading } from './GameHeading';
 export { default as Emoji } from './Emoji';
+export { default as ExpandableText } from './ExpandableText';
