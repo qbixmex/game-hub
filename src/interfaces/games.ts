@@ -110,6 +110,16 @@ export interface Publisher {
   image_background: string;
 }
 
+export interface Trailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: {
+    480: string;
+    max: string;
+  };
+}
+
 export interface Platform {
   id:   number;
   name: string;
