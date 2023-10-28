@@ -8,10 +8,12 @@ import getCroppedImageUrl from '../services/image-url';
 const GameCard: FC<{game: Game}> = ({ game }) => {
   return (
     <Card>
-      <Image
-        src={getCroppedImageUrl(game.background_image)}
-        alt={game.name}
-      />
+      <Link to={`/games/${game.slug}`}>
+        <Image
+          src={getCroppedImageUrl(game.background_image)}
+          alt={game.name}
+        />
+      </Link>
       <CardBody>
         <HStack
           alignItems="center"
@@ -23,7 +25,7 @@ const GameCard: FC<{game: Game}> = ({ game }) => {
         </HStack>
         <Flex justifyContent="space-between" alignItems="center">
           <Heading fontSize="2xl" whiteSpace="break-spaces">
-            <Link to={`/games/${game.slug}`}>{game.name}</Link>
+          <Link to={`/games/${game.slug}`}>{game.name}</Link>
           </Heading>
           <Emoji rating={ game.rating_top } />
         </Flex>
