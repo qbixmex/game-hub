@@ -1,5 +1,6 @@
 import { FC } from 'react';
 import useTrailers from '../hooks/useTrailers';
+import { Box } from '@chakra-ui/react';
 
 type Props = {
   gameId: number;
@@ -14,11 +15,13 @@ const GameTrailer: FC<Props> = ({ gameId }) => {
   const firstTrailer = trailers?.results[0];
 
   return (!firstTrailer) ? null : (
-    <video
-      src={ firstTrailer.data[480] }
-      poster={ firstTrailer.preview }
-      controls
-    />
+    <Box mb={5}>
+      <video
+        src={ firstTrailer.data[480] }
+        poster={ firstTrailer.preview }
+        controls
+      />
+    </Box>
   );
 };
 
