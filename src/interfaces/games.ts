@@ -102,6 +102,14 @@ export interface Genre {
   language?:        string;
 }
 
+export interface Screenshot {
+  id: number;
+  image: string;
+  width:  number;
+  height: number;
+  is_deleted: boolean;
+}
+
 export interface Publisher {
   id: number;
   name: string;
