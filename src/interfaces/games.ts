@@ -40,6 +40,8 @@ export interface Game {
   name:               string;
   released:           string;
   tba:                boolean;
+  description:        string;
+  description_raw:    string;
   background_image:   string;
   rating:             number;
   rating_top:         number;
@@ -60,6 +62,7 @@ export interface Game {
   parent_platforms:   { platform: Platform }[];
   genres:             Genre[];
   stores:             Store[];
+  publishers:         Publisher[];
   clip:               null;
   tags:               Genre[];
   esrb_rating:        EsrbRating;
@@ -97,6 +100,32 @@ export interface Genre {
   image_background: string;
   domain?:          string;
   language?:        string;
+}
+
+export interface Screenshot {
+  id: number;
+  image: string;
+  width:  number;
+  height: number;
+  is_deleted: boolean;
+}
+
+export interface Publisher {
+  id: number;
+  name: string;
+  slug: string;
+  games_count: number;
+  image_background: string;
+}
+
+export interface Trailer {
+  id: number;
+  name: string;
+  preview: string;
+  data: {
+    480: string;
+    max: string;
+  };
 }
 
 export interface Platform {
