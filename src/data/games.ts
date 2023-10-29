@@ -1,6 +1,4 @@
-import { FetchResponse, Game } from "../interfaces";
-
-const gamesResponse: FetchResponse<Game> = {
+const gamesResponse = {
   "count": 854770,
   "next": "https://api.rawg.io/api/games?key=99d73ef3545547fbb7f6f775f1eb0967&page=2",
   "previous": null,
